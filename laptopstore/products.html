@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LaptopStore - Trang danh sách sản phẩm 1</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-bg: #0a192f;
+        --accent-blue: #1a73e8;
+        --text-dark: #222222;
+        --light-box: #f1f3f4;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text-dark);
+        background-color: #ffffff;
+      }
+
+      /* NAVBAR STYLE - Chuẩn thiết kế màu trắng */
+      .navbar {
+        background-color: #ffffff !important;
+        padding: 20px 0;
+        border-bottom: 1px solid #e0e0e0;
+      }
+      .navbar-brand {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--text-dark) !important;
+      }
+      .nav-link {
+        color: #555555 !important;
+        font-weight: 500;
+        font-size: 0.95rem;
+        padding: 0 15px !important;
+      }
+      .nav-link.active {
+        color: var(--accent-blue) !important;
+        border-bottom: 2px solid var(--accent-blue);
+      }
+      .search-container {
+        position: relative;
+        width: 220px;
+      }
+      .search-container input {
+        border-radius: 4px;
+        border: 1px solid #cccccc;
+        padding: 4px 30px 4px 10px;
+        font-size: 0.85rem;
+        width: 100%;
+        background-color: #f1f3f4;
+      }
+      .search-container i {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #777777;
+        font-size: 0.85rem;
+      }
+
+      /* SIDEBAR BỘ LỌC KHỐI XÁM BO GÓC GIỐNG FIGMA */
+      .filter-sidebar {
+        background-color: #f1f3f4;
+        border-radius: 12px;
+        padding: 30px 20px;
+      }
+      .filter-section-title {
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+      }
+      .price-slider-placeholder {
+        width: 100%;
+        height: 4px;
+        background-color: #000;
+        position: relative;
+        margin: 15px 0 25px 0;
+      }
+      .price-slider-placeholder::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        background-color: #fff;
+        border: 3px solid #000;
+        border-radius: 50%;
+        top: -5px;
+        left: 30%;
+      }
+
+      /* LƯỚI CARD SẢN PHẨM PHÍA TRÊN */
+      .product-grid-card {
+        border: none;
+        background: transparent;
+        margin-bottom: 35px;
+      }
+      .product-grid-card .img-container {
+        text-align: center;
+        padding: 10px;
+        background: #fff;
+      }
+      .product-grid-card img {
+        max-height: 170px;
+        max-width: 100%;
+        object-fit: contain;
+      }
+      .product-grid-name {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #000;
+        text-decoration: none;
+        margin-top: 10px;
+        display: block;
+      }
+      .product-grid-price {
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: #000;
+        margin-bottom: 12px;
+      }
+      .btn-mua-nhanh {
+        background-color: #e0e0e0;
+        color: #000;
+        font-weight: 600;
+        font-size: 0.9rem;
+        border: none;
+        border-radius: 8px;
+        width: 100%;
+        padding: 8px 0;
+        transition: all 0.2s;
+      }
+      .btn-mua-nhanh:hover {
+        background-color: #d0d0d0;
+      }
+
+      /* PHÂN TRANG VUÔNG ĐẬM NHẠT CHUẨN FIGMA */
+      .pagination-custom .page-item .page-link {
+        border: none;
+        background-color: #f1f3f4;
+        color: #000;
+        font-weight: 600;
+        margin: 0 4px;
+        border-radius: 4px !important;
+        padding: 6px 14px;
+      }
+      .pagination-custom .page-item.active .page-link {
+        background-color: #79b1f9;
+        color: #fff;
+      }
+
+      /* CHI TIẾT SẢN PHẨM DƯỚI (PRECISION BẢN MÔ TẢ PHẦN CỨNG) */
+      .quote-text {
+        font-style: italic;
+        font-size: 1.1rem;
+        font-weight: 500;
+        line-height: 1.5;
+        color: #000;
+      }
+      .desc-text {
+        font-size: 0.85rem;
+        color: #555;
+        line-height: 1.6;
+        text-align: justify;
+      }
+      .tech-highlight-title {
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+      }
+      .black-badge-btn {
+        background-color: #000000;
+        color: #ffffff;
+        font-family: monospace;
+        font-size: 0.75rem;
+        padding: 6px 14px;
+        display: inline-block;
+        letter-spacing: 1px;
+      }
+
+      /* DỊCH VỤ KÈM PHẢI */
+      .service-item-right {
+        font-size: 0.8rem;
+        margin-bottom: 12px;
+      }
+      .service-item-right i {
+        color: var(--accent-blue);
+        font-size: 1.1rem;
+        margin-top: 3px;
+      }
+      .service-item-right strong {
+        display: block;
+        color: #000;
+        font-size: 0.85rem;
+      }
+
+      /* KHỐI ĐẾM NGƯỢC FLASH SALE XANH NHẠT */
+      .countdown-box {
+        background-color: #e8f0fe;
+        border-radius: 4px;
+        padding: 12px;
+        text-align: center;
+      }
+      .countdown-title {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+      }
+      .countdown-time {
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+      }
+
+      /* BẢNG THÔNG SỐ XANH NHẠT */
+      .specs-header-pill {
+        background-color: #e8f0fe;
+        color: var(--primary-bg);
+        font-weight: 600;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 1.05rem;
+        margin-bottom: 25px;
+      }
+      .spec-row {
+        display: flex;
+        padding: 12px 0;
+        border-bottom: 1px solid #e0e0e0;
+        font-size: 0.85rem;
+      }
+      .spec-label {
+        width: 30%;
+        font-weight: 500;
+        color: #555;
+      }
+      .spec-value {
+        width: 70%;
+        font-weight: 600;
+        color: #000;
+      }
+
+      /* FOOTER NỀN TỐI */
+      footer {
+        background-color: var(--primary-bg);
+        color: #ffffff;
+        padding: 60px 0 20px 0;
+        font-size: 0.8rem;
+      }
+      footer h6 {
+        color: #ffffff;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      footer a {
+        color: #a0aec0;
+        text-decoration: none;
+      }
+      footer a:hover {
+        color: #ffffff;
+      }
+      .footer-bottom {
+        border-top: 1px solid #233554;
+        padding-top: 20px;
+        margin-top: 40px;
+        color: #a0aec0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">LaptopStore</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="products.html">Sản phẩm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.html">Giỏ hàng</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Liên hệ</a>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center gap-3">
+            <div class="search-container">
+              <input type="text" placeholder="Tìm kiếm..." />
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <a href="cart.html" class="text-dark"
+              ><i class="fa-solid fa-cart-shopping fs-5"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Grid -->
+    <div class="container my-5">
+      <div class="row g-4">
+        <!-- SIDEBAR CỘT TRÁI - KHỐI BỘ LỌC XÁM NHẠT BO TRÒN -->
+        <div class="col-lg-3">
+          <div class="filter-sidebar">
+            <div class="fw-bold fs-5 mb-3">Bộ lọc</div>
+
+            <div class="mb-4">
+              <div class="filter-section-title">Giá</div>
+              <div class="price-slider-placeholder"></div>
+            </div>
+
+            <div class="mb-4">
+              <div class="filter-section-title">Cấu hình</div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="c1" /><label
+                  class="form-check-label small"
+                  for="c1"
+                  >RAM 16GB</label
+                >
+              </div>
+              <div class="form-check mb-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="c2"
+                  checked
+                /><label class="form-check-label small" for="c2"
+                  >SSD 512GB</label
+                >
+              </div>
+            </div>
+
+            <div>
+              <div class="filter-section-title">Thương hiệu</div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="b1" /><label
+                  class="form-check-label small"
+                  for="b1"
+                  >Dell</label
+                >
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="b2" /><label
+                  class="form-check-label small"
+                  for="b2"
+                  >Asus</label
+                >
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="b3" /><label
+                  class="form-check-label small"
+                  for="b3"
+                  >MacBook</label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DANH SÁCH LƯỚI 2 CỘT SẢN PHẨM LỚN PHÍA TRÊN -->
+        <div class="col-lg-9">
+          <div class="row">
+            <!-- Sản phẩm 1 -->
+            <div class="col-md-6">
+              <div class="product-grid-card">
+                <div class="img-container">
+                  <img
+                    src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=400&q=80"
+                    alt="Dell Inspiron 15"
+                  />
+                </div>
+                <a href="detail.html" class="product-grid-name"
+                  >Dell Inspiron 15</a
+                >
+                <div class="product-grid-price">18.500.000đ</div>
+                <a href="detail.html" class="btn btn-mua-nhanh text-center"
+                  >Mua nhanh</a
+                >
+              </div>
+            </div>
+            <!-- Sản phẩm 2 -->
+            <div class="col-md-6">
+              <div class="product-grid-card">
+                <div class="img-container">
+                  <img
+                    src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=400&q=80"
+                    alt="Asus Vivobook"
+                  />
+                </div>
+                <a href="#" class="product-grid-name">Asus Vivobook</a>
+                <div class="product-grid-price">16.990.000đ</div>
+                <button class="btn btn-mua-nhanh">Mua nhanh</button>
+              </div>
+            </div>
+            <!-- Sản phẩm 3 -->
+            <div class="col-md-6">
+              <div class="product-grid-card">
+                <div class="img-container">
+                  <img
+                    src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80"
+                    alt="MacBook Air M2"
+                  />
+                </div>
+                <a href="#" class="product-grid-name">MacBook Air M2</a>
+                <div class="product-grid-price">24.990.000đ</div>
+                <button class="btn btn-mua-nhanh">Mua nhanh</button>
+              </div>
+            </div>
+            <!-- Sản phẩm 4 -->
+            <div class="col-md-6">
+              <div class="product-grid-card">
+                <div class="img-container">
+                  <img
+                    src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=400&q=80"
+                    alt="Asus ROG Strix"
+                  />
+                </div>
+                <a href="cart.html" class="product-grid-name">Asus ROG Strix</a>
+                <div class="product-grid-price">35.200.000đ</div>
+                <a href="cart.html" class="btn btn-mua-nhanh text-center"
+                  >Mua nhanh</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Phân trang vuông góc phẳng chuẩn chỉ -->
+          <nav class="mt-4">
+            <ul class="pagination pagination-custom justify-content-center">
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- PHẦN DƯỚI: KHU VỰC CHI TIẾT HIỆU SUẤT ĐỀ TÀI & FLASH SALE -->
+      <div class="row mt-5 pt-5 border-top g-4">
+        <div class="col-12 mb-2">
+          <p class="quote-text">
+            "Mỗi đường nét trên Precision 5680 đều được tính toán để mang lại
+            hiệu suất tối đa trong một thân máy mỏng nhẹ không tưởng."
+          </p>
+          <p class="desc-text mt-3">
+            Trải nghiệm sức mạnh xử lý vượt trội với vi xử lý Intel Core i9 thế
+            hệ thứ 13, được tối ưu hóa cho các khối lượng công việc nặng. Hệ
+            thống tản nhiệt kép tiên tiến giúp duy trì nhiệt độ ổn định ngay cả
+            khi render 3D hay huấn luyện mô hình AI liên tục trong nhiều giờ.
+          </p>
+        </div>
+
+        <!-- Khối thông tin hình ảnh tản nhiệt bên trái -->
+        <div class="col-md-7">
+          <div class="row align-items-center">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+              <img
+                src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80"
+                alt="Tản nhiệt Dual Cooling"
+                class="img-fluid rounded border"
+              />
+            </div>
+            <div class="col-sm-6">
+              <div class="tech-highlight-title">Tản nhiệt tối ưu</div>
+              <p class="text-muted small">
+                Công nghệ quạt đầu ra đối xứng kép (DOO) giúp lưu thông khí tốt
+                hơn 20% so với thế hệ trước.
+              </p>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="black-badge-btn">
+              BETA TECH, HAPTIC TRACKPAD INTEGRATION
+            </div>
+          </div>
+        </div>
+
+        <!-- Khối dịch vụ đi kèm & Flash Sale bên phải -->
+        <div class="col-md-5">
+          <div class="d-flex gap-2 service-item-right">
+            <i class="fa-solid fa-shield-cat"></i>
+            <div>
+              <strong>Bảo hành 36 tháng</strong>Hỗ trợ tận nơi với gói
+              ProSupport Plus.
+            </div>
+          </div>
+          <div class="d-flex gap-2 service-item-right">
+            <i class="fa-solid fa-arrow-rotate-left"></i>
+            <div>
+              <strong>Đổi trả 1-1 trong 30 ngày</strong>Nếu có lỗi phần cứng
+              phát sinh từ nhà sản xuất.
+            </div>
+          </div>
+          <div class="d-flex gap-2 service-item-right mb-4">
+            <i class="fa-solid fa-laptop-code"></i>
+            <div>
+              <strong>Cài đặt phần mềm miễn phí</strong>Tặng Windows 11 Pro và
+              trọn bộ công cụ Adobe.
+            </div>
+          </div>
+
+          <!-- Đếm ngược Flash Sale xanh nhạt -->
+          <div class="countdown-box">
+            <div class="countdown-title text-primary text-uppercase">
+              Flash Sale kết thúc sau
+            </div>
+            <div class="countdown-time text-primary">08 : 42 : 11</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BẢNG THÔNG SỐ CHI TIẾT KHỐI XANH PHÍA CUỐI -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="specs-header-pill">Thông số kỹ thuật chi tiết</div>
+
+          <div class="spec-row">
+            <div class="spec-label">Vi xử lý</div>
+            <div class="spec-value">
+              Intel Core™ i9-13900H (24MB Cache, 14 Cores, up to 5.4GHz)
+            </div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-label">Card đồ họa</div>
+            <div class="spec-value">
+              NVIDIA® RTX™ 3500 Ada Generation, 12GB GDDR6
+            </div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-label">Bộ nhớ RAM</div>
+            <div class="spec-value">64GB, 2x32GB, LPDDR5x, 6000MT/s</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-label">Ổ cứng</div>
+            <div class="spec-value">2TB M.2 PCIe NVMe Gen4 Performance SSD</div>
+          </div>
+          <div class="spec-row" style="border-bottom: none">
+            <div class="spec-label">Trọng lượng</div>
+            <div class="spec-value">1.91 kg (Bản Pin 97Whr)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Hệ thống phân phối -->
+    <footer>
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-5">
+            <h6>LaptopStore</h6>
+            <p class="text-muted small">
+              Hệ thống phân phối laptop workstation & chuyên nghiệp hàng đầu tại
+              Việt Nam.
+            </p>
+            <div class="d-flex gap-2 text-muted fs-6 mt-2">
+              <i class="fa-brands fa-figma"></i>
+              <i class="fa-brands fa-github"></i>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <h6>Thông tin</h6>
+            <ul class="list-unstyled d-flex flex-column gap-1 small">
+              <li><a href="#">Chính sách bảo hành</a></li>
+              <li><a href="#">Hệ thống cửa hàng</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-4">
+            <h6>Đăng ký nhận tin</h6>
+            <div class="input-group input-group-sm">
+              <input
+                type="email"
+                class="form-control bg-dark border-secondary text-white"
+                placeholder="Email của bạn..."
+              />
+              <button class="btn btn-primary" type="button">Gửi</button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="footer-bottom d-flex justify-content-between flex-wrap small"
+        >
+          <p class="mb-0">&copy; 2026 LaptopStore. LHP Data System.</p>
+          <p class="mb-0">
+            <a href="#">Hotline 1900 1234</a> |
+            <a href="#">Chính sách đổi trả</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

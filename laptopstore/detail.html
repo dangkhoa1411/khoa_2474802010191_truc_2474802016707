@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dell XPS 13 Plus - LaptopStore</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-bg: #0a192f;
+        --accent-color: #c00000;
+        --text-dark: #222222;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text-dark);
+      }
+      .navbar {
+        background-color: var(--primary-bg) !important;
+      }
+      .main-product-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+      .thumb-img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        cursor: pointer;
+        padding: 5px;
+      }
+      .thumb-img.active,
+      .thumb-img:hover {
+        border-color: var(--primary-bg);
+        border-width: 2px;
+      }
+      .price-tag {
+        font-size: 2rem;
+        color: var(--accent-color);
+        font-weight: 700;
+      }
+      .spec-badge {
+        border: 1px solid #cbd5e1;
+        padding: 6px 14px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        font-weight: 500;
+      }
+      .spec-badge.active {
+        border-color: var(--primary-bg);
+        background-color: #f0f4f8;
+        color: var(--primary-bg);
+        font-weight: 600;
+      }
+      .table-specs th {
+        background-color: #f8f9fa;
+        width: 30%;
+      }
+      footer {
+        background-color: var(--primary-bg);
+        color: #ffffff;
+        padding: 40px 0 20px 0;
+        margin-top: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">LaptopStore</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">Sản phẩm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="detail.html">Chi tiết</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.html">Giỏ hàng</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Product Details Content -->
+    <div class="container my-5">
+      <div class="row g-5">
+        <!-- Left Grid: Images Gallery -->
+        <div class="col-lg-6">
+          <img
+            src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=600&q=80"
+            alt="Dell XPS 13"
+            class="main-product-img mb-3"
+          />
+          <div class="row g-2">
+            <div class="col-3">
+              <img
+                src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=150&q=80"
+                class="thumb-img active"
+              />
+            </div>
+            <div class="col-3">
+              <img
+                src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=150&q=80"
+                class="thumb-img"
+              />
+            </div>
+            <div class="col-3">
+              <img
+                src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=150&q=80"
+                class="thumb-img"
+              />
+            </div>
+            <div class="col-3">
+              <img
+                src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=150&q=80"
+                class="thumb-img"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Grid: Configurations Selection -->
+        <div class="col-lg-6">
+          <h1 class="mb-2">Dell XPS 13 Plus 9320</h1>
+          <div class="price-tag mb-4">25.990.000₫</div>
+
+          <div class="mb-3">
+            <h6 class="fw-bold">Chọn dung lượng RAM:</h6>
+            <div class="spec-badge">8GB</div>
+            <div class="spec-badge active">16GB</div>
+            <div class="spec-badge">32GB</div>
+          </div>
+
+          <div class="mb-4">
+            <h6 class="fw-bold">Chọn dung lượng ổ cứng SSD:</h6>
+            <div class="spec-badge">256GB</div>
+            <div class="spec-badge active">512GB</div>
+            <div class="spec-badge">1TB</div>
+          </div>
+
+          <!-- Brief Features Highlight List -->
+          <ul class="list-unstyled mb-4 text-muted">
+            <li>
+              <i class="fa-solid fa-check text-success me-2"></i
+              ><strong>Vi xử lý:</strong> Intel Core i7-1360P vPro
+            </li>
+            <li>
+              <i class="fa-solid fa-check text-success me-2"></i
+              ><strong>Màn hình:</strong> 13.4" InfinityEdge OLED 3.5K Touch
+            </li>
+            <li>
+              <i class="fa-solid fa-check text-success me-2"></i
+              ><strong>Thời lượng Pin:</strong> Sử dụng lên đến 12 giờ văn phòng
+            </li>
+          </ul>
+
+          <a
+            href="cart.html"
+            class="btn btn-danger btn-lg w-100 py-3 rounded-3 fw-bold"
+            ><i class="fa-solid fa-cart-plus me-2"></i>Thêm vào giỏ hàng</a
+          >
+        </div>
+      </div>
+
+      <!-- Technical Specification Detail Table -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <h3 class="border-bottom pb-2 mb-3">Thông số kỹ thuật chi tiết</h3>
+          <table class="table table-bordered table-specs align-middle">
+            <tbody>
+              <tr>
+                <th>VI XỬ LÝ</th>
+                <td>
+                  12th Gen Intel Core™ i7-1260P (18MB cache, 12 cores, 16
+                  threads, up to 4.70 GHz Turbo)
+                </td>
+              </tr>
+              <tr>
+                <th>HỆ ĐIỀU HÀNH</th>
+                <td>Windows 11 Pro Bản quyền, English</td>
+              </tr>
+              <tr>
+                <th>ĐỒ HỌA</th>
+                <td>Intel Iris Xe Graphics tích hợp</td>
+              </tr>
+              <tr>
+                <th>BỘ NHỚ RAM</th>
+                <td>16 GB, LPDDR5, 5200 MHz, integrated, dual-channel</td>
+              </tr>
+              <tr>
+                <th>LƯU TRỮ</th>
+                <td>1 TB, M.2, PCIe NVMe, SSD cao cấp</td>
+              </tr>
+              <tr>
+                <th>CỔNG KẾT NỐI</th>
+                <td>
+                  2 x Thunderbolt™ 4 (USB Type-C™) hỗ trợ DisplayPort và Power
+                  Delivery
+                </td>
+              </tr>
+              <tr>
+                <th>WIRELESS</th>
+                <td>
+                  Intel Killer™ Wi-Fi 6E 1675 (AX211), 2x2, 802.11ax + Bluetooth
+                  Wireless Card
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-end mt-3">
+            <button class="btn btn-outline-dark">
+              <i class="fa-solid fa-file-pdf me-2"></i>Tải PDF Specs cấu hình
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+      <div class="container">
+        <p class="mb-0">
+          &copy; 2026 LaptopStore. Precision hardware for professionals.
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

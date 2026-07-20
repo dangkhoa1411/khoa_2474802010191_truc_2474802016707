@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thanh toán & Liên hệ - LaptopStore</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-bg: #0a192f;
+        --accent-color: #c00000;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #ffffff;
+      }
+      .navbar {
+        background-color: var(--primary-bg) !important;
+      }
+      .form-section {
+        background: #f8f9fa;
+        padding: 25px;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+      }
+      .map-container {
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid #e0e0e0;
+        height: 300px;
+      }
+      footer {
+        background-color: var(--primary-bg);
+        color: #ffffff;
+        padding: 30px 0 15px 0;
+        margin-top: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">LaptopStore</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">Sản phẩm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.html">Giỏ hàng</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="contact.html">Liên hệ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Combined Checkout Form & Contact Information Grid Map -->
+    <div class="container my-5">
+      <div class="row g-5">
+        <!-- Left Grid: Form Checkout & Contact message -->
+        <div class="col-lg-7">
+          <h3 class="mb-4 fw-bold text-uppercase border-bottom pb-2">
+            Thông tin giao hàng & Thanh toán
+          </h3>
+          <form class="form-section mb-5">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold"
+                  >Họ và tên khách hàng</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  value="Nguyễn Văn A"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold"
+                  >Số điện thoại liên hệ</label
+                >
+                <input
+                  type="tel"
+                  class="form-control"
+                  value="0901234567"
+                  required
+                />
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold"
+                  >Địa chỉ nhận hàng chính xác</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Số nhà, tên đường, phường/xã, quận/huyện..."
+                  required
+                />
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label fw-semibold"
+                  >Phương thức vận chuyển</label
+                >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="shipping"
+                    id="shipFast"
+                    checked
+                  />
+                  <label class="form-check-label" for="shipFast"
+                    >Giao nhanh (1-2 ngày) - 35.000₫</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="shipping"
+                    id="shipEco"
+                  />
+                  <label class="form-check-label" for="shipEco"
+                    >Giao tiết kiệm - Miễn phí</label
+                  >
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label fw-semibold"
+                  >Phương thức thanh toán</label
+                >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="payment"
+                    id="payCod"
+                    checked
+                  /><label class="form-check-label" for="payCod"
+                    >Tiền mặt khi nhận hàng (COD)</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="payment"
+                    id="payBank"
+                  /><label class="form-check-label" for="payBank"
+                    >Chuyển khoản Ngân hàng (QR)</label
+                  >
+                </div>
+              </div>
+
+              <div class="col-12 border-top pt-3 mt-4">
+                <div
+                  class="d-flex justify-content-between align-items-center mb-3"
+                >
+                  <span class="fw-bold fs-5">Tổng số tiền thanh toán:</span>
+                  <span class="text-danger fw-bold fs-4">199.990.000₫</span>
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-lg w-100 fw-bold py-2"
+                >
+                  XÁC NHẬN ĐẶT HÀNG NGAY
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Form Gửi tin nhắn Góp ý Hoặc Yêu cầu Bảo hành -->
+          <h3 class="mb-4 fw-bold text-uppercase border-bottom pb-2">
+            Gửi thông điệp góp ý / bảo hành
+          </h3>
+          <form class="form-section">
+            <div class="mb-3">
+              <label class="form-label">Nội dung yêu cầu</label>
+              <textarea
+                class="form-control"
+                rows="4"
+                placeholder="Nội dung chi tiết bạn muốn gửi tới chúng tôi..."
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-outline-dark px-4">
+              Gửi tin nhắn liên hệ
+            </button>
+          </form>
+        </div>
+
+        <!-- Right Grid: Contact Info & Map Location -->
+        <div class="col-lg-5">
+          <h3 class="mb-4 fw-bold text-uppercase border-bottom pb-2">
+            Hệ thống cửa hàng
+          </h3>
+          <div class="mb-4">
+            <p class="mb-2">
+              <strong
+                ><i class="fa-solid fa-headset text-danger me-2"></i>Hotline
+                tổng đài:</strong
+              >
+              1900 1234
+            </p>
+            <p class="mb-2">
+              <strong
+                ><i class="fa-solid fa-envelope text-danger me-2"></i>Email kĩ
+                thuật:</strong
+              >
+              support@laptopstore.com
+            </p>
+            <p class="mb-2">
+              <strong
+                ><i class="fa-solid fa-location-dot text-danger me-2"></i>Địa
+                chỉ trụ sở chính:</strong
+              >
+              273 An Dương Vương, Quận 5, TP. Hồ Chí Minh
+            </p>
+          </div>
+
+          <!-- Tích hợp Google Maps Iframe theo layout -->
+          <div class="map-container mb-4">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.699630397579!2d106.67963287570377!3d10.757997959492477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b7c3d1db1%3A0xb3fcab9f23bf395b!2zMjczIEFuIETGsMahbmcgVsawxqFuZywgUGjGsOG7nW5nIDQsIFF14bqtbiA1LCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1700000000000!5m2!1svi!2s"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
+          <!-- Core Protection Rules Checklist -->
+          <div class="card bg-light">
+            <div class="card-body">
+              <h6 class="fw-bold mb-3">
+                <i class="fa-solid fa-shield text-success me-2"></i>Chính sách
+                bảo vệ an tâm:
+              </h6>
+              <ul class="list-unstyled small mb-0 text-muted">
+                <li class="mb-2">
+                  <i class="fa-solid fa-circle-check text-success me-2"></i>Cam
+                  kết đổi trả trong 7 ngày đầu nếu không ưng ý.
+                </li>
+                <li class="mb-2">
+                  <i class="fa-solid fa-circle-check text-success me-2"></i>Bảo
+                  hành phần cứng 24 tháng toàn diện.
+                </li>
+                <li>
+                  <i class="fa-solid fa-circle-check text-success me-2"></i>Hỗ
+                  trợ tư vấn kĩ thuật trọn đời máy.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-center">
+      <div class="container">
+        <p class="mb-0">
+          &copy; 2026 LaptopStore. Hân hạnh được hỗ trợ phục vụ quý khách.
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
